@@ -1,7 +1,5 @@
 import { StepLogger } from '../components/logs/stepLogger';
-import { PageHelper } from '../components/page-helper';
 import { CommonPageHelper } from '../pages/common/common-page.helper';
-import { WaitHelper } from '../components/wait-helper';
 
 
 describe(`task`, () => {
