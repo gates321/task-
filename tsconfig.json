@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "sourceMap": false,
+        "target": "es2019",
+        "module": "commonjs",
+        "removeComments": true,
+        "noImplicitAny": true,
+        "typeRoots": [
+            "node_modules/@types"
+          ],
+        "strictPropertyInitialization": true,
+        "strictNullChecks": true,
+        "baseUrl": ".",
+        "paths": {
+            "./e2e/": ["./e2e/"],
+        },
+        "types": [
+            "node",
+            "webdriverio",
+            "@wdio/jasmine-framework",
+            
+        ]
+    },
+    "include": [
+        "./e2e",
+    ]
+}
