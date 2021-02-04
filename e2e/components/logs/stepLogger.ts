@@ -7,6 +7,7 @@ export class StepLogger {
     testCaseId!: number;
     logMessages = '';
 
+
     constructor(private debug = process.env.DEBUG || true) {
         this.id = 0;
     }
@@ -30,11 +31,6 @@ export class StepLogger {
     stepId(optionalId = 0) {
         this.id = optionalId > 0 ? optionalId : this.id + 1;
         this.commonLogger('Step Id', this.id.toString());
-    }
-
-    specLoger(operation: string, step: string) {
-        const timestamp = new Date().toISOString().split('T')[1];
-        const message = `${this.stepIdVar} *${operation}* - ${step}`;
     }
 
     commonLogger(operation: string, step: string) {

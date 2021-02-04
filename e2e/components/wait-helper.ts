@@ -1,18 +1,30 @@
-import { StepLogger } from 'e2e/components/logs/stepLogger';
 
+import { Element, ElementArray } from 'webdriverio';
 export class WaitHelper {
 
-    static async pause(pauseTime = 5000) {
+    static async sleeep(pauseTime = 5000) {
         await browser.pause(pauseTime);
     }
 
-    static async waitForElementToBePresent(targetElement: any) {
+    // element existing in DOM
+    static async waitForElementToBePresent(targetElement: Element) {
         const elems = await targetElement.waitForExist();
         return elems;
     }
 
-    static async waitToBeDisplayed(targetElement: any) {
+    // element present on page
+    static async waitToBeDisplayed(targetElement: Element) {
         const elems = await targetElement.waitForDisplayed();
+        return elems;
+    }
+
+    static async waitNotToBeDisplayed(targetElement: Element) {
+        const elems = await targetElement.waitForDisplayed({ reverse: true });
+        return elems;
+    }
+
+    static async waitTobeClickable(targetLement: Element) {
+        const elems = await targetLement.waitForClickable();
         return elems;
     }
 } 
