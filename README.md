@@ -1,2 +1,2 @@
-"run npm install from e2e directory" 
-"npm run e2e for launching test"
+# wbdProjectJasmine
+npm install and npm run e2e to run test
