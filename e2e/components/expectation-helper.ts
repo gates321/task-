@@ -37,5 +37,10 @@ export class ExpectationHelper {
         expect((await PageHelper.getText(targetElement)).toLowerCase()).toContain(expectedValue.toLowerCase());
     }
 
+    static async verifyValueGraterThan(actualValue: number, expectedValue: number, stepLogger: StepLogger) {
+        stepLogger.verification(`'${actualValue}' should be grater than '${expectedValue}' value`);
+        expect(actualValue).toBeGreaterThan(expectedValue);
+    }
+
 
 }

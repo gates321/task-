@@ -11,6 +11,7 @@ describe(SuiteNames.regression, () => {
 
     beforeAll(async () => {
         stepLogger = new StepLogger();
+        await WaitHelper.waitForPageToStable();
     });
 
     afterAll(async () => {
@@ -21,12 +22,25 @@ describe(SuiteNames.regression, () => {
         await HomePageHelper.clickOnRent(stepLogger);
         await OnboardingPageHelper.verifyOnBoardingPage(stepLogger);
         await WaitHelper.sleeep();
-        await OnboardingPageHelper.moveSlider(stepLogger);
-        await OnboardingPageHelper.getPrice(stepLogger);
+        const sliderCoun = await OnboardingPageHelper.moveSlider(stepLogger);
+        const price = await OnboardingPageHelper.getPrice(stepLogger);
         await OnboardingPageHelper.enterText();
         await OnboardingPageHelper.clickOnBikeIcon();
         await OnboardingPageHelper.nextButton();
+        await OnboardingPageHelper.checkLevelsAndClickPLus(stepLogger);
+        await OnboardingPageHelper.checkLevelAndClickMinus(stepLogger);
         await WaitHelper.sleeep();
+        const values = await OnboardingPageHelper.getValues(stepLogger);
+        await OnboardingPageHelper.goToCafeBars(stepLogger);
+        await OnboardingPageHelper.goToParks(stepLogger);
+        await OnboardingPageHelper.goToGym(stepLogger);
+        await OnboardingPageHelper.goToShops(stepLogger);
+        await OnboardingPageHelper.goToShops(stepLogger);
+        await OnboardingPageHelper.clickOnLastDate(stepLogger);
+        await OnboardingPageHelper.verifyModalOpenesAndCLickShowResults(stepLogger);
+        await OnboardingPageHelper.verifyValuesAreCorrect(stepLogger, sliderCoun, price, values);
+
+        //await WaitHelper.sleeep();
         // await OnboardingPageHelper.clickOnBikeIcon();
     })
 })

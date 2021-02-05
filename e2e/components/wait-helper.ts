@@ -27,4 +27,14 @@ export class WaitHelper {
         const elems = await targetLement.waitForClickable();
         return elems;
     }
+
+    static async waitForEnabled(targetLement: Element) {
+        const elems = await targetLement.waitForEnabled();
+        return elems;
+    }
+
+
+    static async waitForPageToStable() {
+        await browser.waitUntil(async () => await browser.execute(`return document.readyState === 'complete'`));
+    }
 } 
