@@ -17,11 +17,17 @@ exports.config = {
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
     specs: [
-        './e2e/specs/**/*.ts'
+        './e2e/specs/**/*.e2e-spec.ts'
     ],
+
+    suites: {
+        regression: [`./e2e/specs/regression/*e2e-spec.ts`],
+        smokeTest: [`./e2e/specs/smoke/*.e2e-spec.ts`]
+    },
+
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+        // 'path/to/exclue2eded/files'
     ],
     //
     // ============
@@ -39,7 +45,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -50,13 +56,14 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+        maxInstances: 1,
         //
         browserName: 'chrome',
         'goog:chromeOptions': {
             // to run chrome headless the following flags are required
             // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
-            args: ['--window-size=1600,1100'],
+            args: ['--window-size=1600,1100',
+                '--enable-javascript'],
         },
         acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
@@ -95,7 +102,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://www.ebay.com/',
+    baseUrl: 'https://www.searchsmartly.co/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 25000,
@@ -141,7 +148,7 @@ exports.config = {
         compilers: [
             'tsconfig-paths/register'
         ],
-        defaultTimeoutInterval: 400000,
+        defaultTimeoutInterval: 40000000,
         requires: ['ts-node/register'],
         helpers: [require.resolve('@babel/register')],
         expectationResultHandler: function (passed, assertion) {
